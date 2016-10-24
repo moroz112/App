@@ -1,14 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 <head>
     <meta charset="UTF-8">
     <title>MyApp</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script type="text/javascript" src="src/app.js"></script>
 </head>
 <body>
-    Server works
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-<div ng-app>
-    {{1+1}}
-</div>
+    //1,2,3
+    <div ng-controller="myCtrl1">
+        {{hello}}
+        <button ng-click="setHelloByUser('Fuccking hello')">Button</button>
+    </div>
+
+    //controller as syntax
+
+    <div ng-controller="myCtrl1 as myCtrl1">
+        <div ng-controller="myCtrl2 as myCtrl2">
+            <input ng-model="myCtrl2.myFactory.hello">
+            <div ng-controller="myCtrl3 as myCtrl3">
+                {{myCtrl3.myFactory.hello}}
+            </div>
+        </div>
+    </div>
+    //directives
+    <div my-directive>
+    click me
+    </div>
+    // loop directive
+    <div ng-controller="directiveCtrl">
+        <loop-directive>{{mainVar}}</loop-directive>
+    </div>
+    <templateurl-directive></templateurl-directive>
 </body>
 </html>
