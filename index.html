@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>MyApp</title>
+    <link rel="stylesheet" href="style/style.css" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script type="text/javascript" src="src/app.js"></script>
 </head>
 <body>
-    //1,2,3
+    <div class="block">//1,2,3</div>
     <div ng-controller="myCtrl1">
         {{hello}}
         <button ng-click="setHelloByUser('Fuccking hello')">Button</button>
     </div>
 
-    //controller as syntax
-
+    <div class="block">//controller as syntax</div>
     <div ng-controller="myCtrl1 as myCtrl1">
         <div ng-controller="myCtrl2 as myCtrl2">
             <input ng-model="myCtrl2.myFactory.hello">
@@ -23,14 +23,55 @@
             </div>
         </div>
     </div>
-    //directives
+
+    <div class="block">//directives</div>
     <div my-directive>
     click me
     </div>
-    // loop directive
+
+    <div class="block">// loop directive</div>
     <div ng-controller="directiveCtrl">
         <loop-directive>{{mainVar}}</loop-directive>
     </div>
     <templateurl-directive></templateurl-directive>
+
+    <div class="block">// template cache example</div>
+    <cache-directive>This text should display because transclude</cache-directive>
+
+    <div class="block">// Communication between directive and controller</div>
+    <div ng-controller="directiveCtrl">
+        {{hello}}
+        <directivectrl-communication></directivectrl-communication>
+    </div>
+
+    <div class="block">// scope true in directive</div>
+    <div ng-controller="scopeTrue">
+        name from controller {{name}}
+        <scope-true></scope-true>
+    </div>
+
+    <div class="block">//Isolation scope in directives</div>
+    <div ng-controller="isolationScope">
+        this is name from controller {{name}}
+        this is color from controller {{color}}
+        <div>Please click this button to reverse name</div>
+        <div><button ng-click="reverse()">Reverse name from controller</button><div>
+        <isolation-scope name="{{name}}" color="color" reverse="reverse()"></isolation-scope>
+    </div>
+    <div class="block">//Transclude element in directive</div>
+    <form wrap-in="red">
+        <div>
+            <label>Please enter your login</label>
+            <input type="text" placeholder="Enter login">
+        </div>
+        <div>
+            <label>Please enter your password</label>
+            <input type="text" placeholder="Enter password">
+        </div>
+        <button>Submit</button>
+    </form>
+            <script type="text/ng-template" id="red">
+                <div class="red">Before directive</div>
+            </script>
 </body>
 </html>
