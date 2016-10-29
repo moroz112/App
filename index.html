@@ -73,5 +73,16 @@
             <script type="text/ng-template" id="red">
                 <div class="red">Before directive</div>
             </script>
+    <div class="block">//http requests from Angular</div>
+            <div ng-controller="httpController as httpController">
+
+                <input ng-model="book.name">
+                <button ng-click="httpController.addBook(book)">Add new book to bookList</button>
+                <button ng-click="httpController.getBooks()">Get books list</button>
+                <div ng-repeat="bookk in httpController.books">
+                    {{bookk.name}}
+                </div>
+            </div>
+
 </body>
 </html>

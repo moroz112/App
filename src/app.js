@@ -184,3 +184,36 @@ app.directive("wrapIn", function($templateCache) {
         }
     }
 });
+//http requests
+app.controller("httpController", httpController);
+
+httpController.$inject = ['$http', '$scope'];
+
+function httpController($http, $scope) {
+    this.books;
+    var that = this;
+
+    this.addBook = function(book) {
+        console.log("book",book);
+      $http.post("/addBook", book)
+          .success(function(result) {
+             console.log("res", result);
+              that.books.push(book);
+              $scope.book = null;
+          })
+          .error(function(error) {
+             console.log("error", error);
+          });
+    };
+    this.getBooks = function() {
+        $http.get("/books")
+            .success(function(result) {
+                console.log("success", result);
+                that.books = result;
+            })
+            .error(function(error) {
+                console.log("error", error);
+            })
+
+    }
+}
