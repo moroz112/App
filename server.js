@@ -22,7 +22,7 @@ var books = [
       name: "Backbone"
    }
 ];
-app.use('/', express.static(__dirname));
+app.use('/', express.static(__dirname + '/routers'));
 app.get('/books', function(req, res){
    res.send(books);
 });

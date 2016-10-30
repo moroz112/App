@@ -217,3 +217,32 @@ function httpController($http, $scope) {
 
     }
 }
+//to work with http withOut backend we can use angular-mocks
+//we should connect link with angular-mocks to our HTML
+//define it in array of dependencies during initialization angular's module
+//and then inject $httpBackend service to app.run method (method that allow to do something
+// immediately after application initialization)
+
+
+
+//Compile in directive
+app.directive("compileDirective", function() {
+   return {
+       restrict: "E",
+       compile: function(elem) {
+            console.log("elem", elem);
+           var escape = function(content) {
+               return content.replace(/\</g, '&lt')
+                   .replace(/\>/g, '&gt');
+
+           };
+           var pre = angular.element('<pre class="prettyprint"></pre>');
+           var pretty = prettyPrintOne(escape(elem.html()));
+           pre.append(pretty);
+           elem.replaceWith(pre);
+       },
+       link: function(scope, element, attrs, ctrl, transclude){
+
+       }
+   }
+});
