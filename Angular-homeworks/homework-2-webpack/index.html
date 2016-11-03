@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework-2</title>
+    <link rel="stylesheet" href="css/ng-cloak.css">
+</head>
+<body>
+    <div ng-controller="listsCtrl as listsCtrl">
+        <ul>
+            <li ng-repeat="listItem in listsCtrl.lists">
+                {{listItem.name}}
+            </li>
+        </ul>
+        <div>
+            <form ng-submit="listsCtrl.addList(listsCtrl.listName)">
+                <input ng-model="listsCtrl.listName">
+            </form>
+        </div>
+    </div>
+<script src="js/bundle.js"></script>
+
+</body>
+</html>
