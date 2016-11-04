@@ -1,0 +1,11 @@
+<div>
+    update list
+    <form>
+        <input ng-model="listController.toUpdateElement" ng-focus="listController.notificationUpdateMessage = ''">
+        <button ng-click="listController.updateListElement(listController.toUpdateElement)">Update</button>
+    </form>
+    {{listController.notificationUpdateMessage}}
+     <div>
+         Back to <a ui-sref="lists">lists</a>
+     </div>
+</div>

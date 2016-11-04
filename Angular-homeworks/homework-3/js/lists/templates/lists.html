@@ -1,0 +1,8 @@
+<div>
+    <ul>
+        <li ng-repeat="listItem in listsController.lists">
+            {{listItem.name}} <a ng-click="listsController.goToUpdate(listItem)" ui-sref="updateList"> Update item</a>
+        </li>
+    </ul>
+    <a ui-sref="createList">Create new list</a>
+</div>

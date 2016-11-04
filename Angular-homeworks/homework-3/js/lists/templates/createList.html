@@ -1,0 +1,14 @@
+<div>
+    <form>
+        <input ng-model="listsController.listName" ng-focus="listsController.notificationMessage = ''">
+        <button ng-click="listsController.createList(listsController.listName)">
+            submit
+        </button>
+    </form>
+    <div>
+        {{listsController.notificationMessage}}
+    </div>
+    <div>
+        Back to <a ui-sref="lists">lists</a>
+    </div>
+</div>
