@@ -1,11 +1,12 @@
 export default class listsCtrl {
-	constructor(listsFactory) {
-		this.lists = listsFactory.getLists();
-		this.addList = function(list) {
-			listsFactory.addList(list);
-			this.listName = ''
-		}
+	constructor(listsService) {
+		this.lists = listsService.getLists();
+		this.listsService = listsService;
+	}
+	addList(list) {
+		this.listsService.addList(list);
+		this.listName = ''
 	}
 }
 
-listsCtrl.$inject = ['listsFactory'];
+listsCtrl.$inject = ['listsService'];
