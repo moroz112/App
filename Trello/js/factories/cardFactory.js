@@ -27,5 +27,12 @@ angular.module('app').factory('cardFactory', function() {
           list_id: list.id
       });
     };
+    service.deleteCard = function(card) {
+        return _.pull(cards, card);
+    };
+    service.updateCard = function (updatingCard) {
+      var card = _.findWhere(cards, {id: updatingCard.id});
+        card.name = updatingCard.name;
+    };
     return service;
 });

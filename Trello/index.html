@@ -24,11 +24,18 @@
                      ng-repeat="list in listsCtrl.lists"
                      ng-controller="listCtrl as listCtrl">
                 <h1>{{list.listName}}</h1>
-
-                <div class="card" ng-repeat="card in listCtrl.getCards(list)">
-                    {{card.name}}
-                </div>
-
+                    <div class="card" ng-repeat="card in listCtrl.getCards(list)" ng-controller="cardCtrl as cardCtrl">
+                        <div ng-if="!cardCtrl.isEditing">
+                            {{card.name}}
+                            <div ng-click="cardCtrl.editCard(card)" class="edit-small edit-card hand"></div>
+                            <div ng-click="cardCtrl.deleteCard(card)" class="remove-small remove-card hand"></div>
+                        </div>
+                        <div ng-if="cardCtrl.isEditing">
+                            <form ng-submit="cardCtrl.updateCard(card)">
+                                <input type="text" ng-model="cardCtrl.editingCard.name">
+                            </form>
+                        </div>
+                    </div>
                 <a ng-click="listCtrl.removeList(list)" class="hand">
                     <div class="remove remove-list"></div>
                 </a>
@@ -55,5 +62,6 @@
 <script src="js/factories/cardFactory.js"></script>
 <script src="js/controllers/listsCtrl.js"></script>
 <script src="js/controllers/listCtrl.js"></script>
+<script src="js/controllers/cardCtrl.js"></script>
 </body>
 </html>
