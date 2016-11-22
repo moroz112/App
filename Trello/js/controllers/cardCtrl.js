@@ -13,7 +13,7 @@ function cardCtrl(cardFactory) {
         this.isEditing = true;
         this.editingCard = angular.copy(card);
     };
-    this.updateCard = function(card) {
+    this.updateCard = function() {
       cardFactory.updateCard(this.editingCard);
       this.isEditing = false;
       this.editingCard = null;

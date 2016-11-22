@@ -33,6 +33,7 @@ angular.module('app').factory('cardFactory', function() {
     service.updateCard = function (updatingCard) {
       var card = _.findWhere(cards, {id: updatingCard.id});
         card.name = updatingCard.name;
+        card.list_id = updatingCard.list_id;
     };
     return service;
 });
